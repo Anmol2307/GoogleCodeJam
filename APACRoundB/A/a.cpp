@@ -33,13 +33,13 @@ inline void solve(){
 }
 
 int main(){
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+	// freopen("input.txt", "r", stdin);
+	// freopen("output.txt", "w", stdout);
 	int t, i;
 	sd(t);
 	for(i = 1; i <= t; i++){
 		printf("Case #%d: ", i);
 		solve();
 	}
-    return 0;
+  return 0;
 }

@@ -56,10 +56,7 @@ int main()
 					working[j] = 1;
 			}
 		}
-		for (int l = 0; l < 7; l++) {
-			printf("%d ",working[l]);
-		}
-		printf("\n");
+
 		pa.clear();
 		for(i=0 ; i<(1 << 7) ; i++)
 		{
@@ -83,7 +80,6 @@ int main()
 			}
 			if(!cons)
 				continue;
-			printf("I %d\n",i);	
 			for(j=0 ; j<10 ; j++)
 			{
 				cons = 1;
@@ -111,6 +107,11 @@ int main()
 		else
 		{
 			//printf("pa.size() = %d\t" , pa.size());
+			set<string>::iterator it;
+			for (it = pa.begin(); it != pa.end(); it++) {
+				printf("%s ",(*(it)).c_str());
+			}
+			printf("\n");
 			if(DEBUG)
 			{
 				tr(pa , it)
@@ -118,6 +119,7 @@ int main()
 					cout << *(it) << " ";
 				}
 			}
+
 			printf("ERROR!\n");
 		}
 	}

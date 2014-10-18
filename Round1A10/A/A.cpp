@@ -11,12 +11,14 @@ inline void inp(int &n ) {//fast input function
     n=n*sign;
 }
 
+int mx[4]={1,1,1,0},my[4]={-1,0,1,1};
+
 int main () {
   int t, k = 1;
   inp(t);
 
   while (t--) {
-    // printf("Case #%d: ",k++);
+    printf("Case #%d: ",k++);
     int n, k;
     inp(n); inp(k);
     
@@ -44,23 +46,28 @@ int main () {
       indy--;
     }
 
-    // for (int i = 0; i < n; i++) {
-    //   for (int j = 0; j < n; j++) {
-    //     printf("%c",rot[i][j]);  
-    //   }
-    //   printf("\n");
-    // }
-
     bool br = false, bb = false;
-    for (int i = 0; i < n; i++) {
-      int cr = 0, cb = 0;
-      for (int j = 0; j < n; j++) {
-        if (rot[i][j] == 'R') cr++;
-        else if (rot[i][j] == 'B') cb++;
+    for(int i=0; i<n; i++) {
+      for(int j=0; j<n; j++){
+        if(rot[i][j]=='.')continue;
+        char c=rot[i][j];
+        for(int q=0;q<4;q++){
+          int ii=i,jj=j;
+          int w;
+          for(w=0;w<k;w++){
+            if(ii<0||ii>=n||jj<0||jj>=n)break;
+            if(rot[ii][jj]!=c)break;
+            ii+=mx[q];jj+=my[q];
+          }
+          if(w==k){
+            if(c=='R') br=true;
+            else if(c=='B') bb=true;
+            break;
+          }
+        }
       }
-      if (cr >= k) br = true;
-      if (cb >= k) bb = true;
     }
+
     if (br && bb) printf("Both\n");
     else if (br) printf("Red\n");
     else if (bb) printf("Blue\n");
